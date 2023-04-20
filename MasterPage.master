@@ -32,8 +32,11 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    
+    
     	<header id="mu-hero" class="" role="banner">
 		<!-- Start menu  -->
+
 		<nav class="navbar navbar-fixed-top navbar-default ">
 		  	<div class="container">
 			    <!-- Brand and toggle get grouped for better mobile display -->
@@ -49,15 +52,17 @@
 			      <a class="navbar-brand" href="index.html">Instagram</a>
 
 			    </div>
-
+                 
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      	<ul class="nav navbar-nav mu-menu navbar-right">
 			      		<li><asp:HyperLink id="hyperlink1" NavigateUrl="homepage.aspx" Text="Home"  runat="server"/></li>
-				        <li><asp:HyperLink id="hyperlink3" NavigateUrl="upload.aspx" Text="Share Post"  runat="server"/></li>
-			            <li><asp:HyperLink id="hyperlink2" NavigateUrl="profile.aspx" Text="My Profile"  runat="server"/></li>
+				        <li><asp:HyperLink id="hyperlink3" NavigateUrl="share.aspx" Text="Share Post"  runat="server"/></li>
+			            <li><asp:HyperLink id="hyperlink2" NavigateUrl="my_profile.aspx" Text="My Profile"  runat="server"/></li>
+                        <li><asp:HyperLink id="hyperlink4" NavigateUrl="login.aspx" Text="Logout"  runat="server"/></li>
 			      	</ul>
 			    </div><!-- /.navbar-collapse -->
+                      
 		  	</div><!-- /.container-fluid -->
 		</nav>
 		<!-- End menu -->

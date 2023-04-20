@@ -26,16 +26,28 @@ public partial class login : System.Web.UI.Page
         ad = new SqlDataAdapter(s, con);
         DataSet ds = new DataSet();
         ad.Fill(ds);
-        string ip_username = ds.Tables[0].Rows[0][0].ToString();
-        string ip_pswd = ds.Tables[0].Rows[0][5].ToString();
-        if (username.Text == ip_username && ip_pswd == password.Text)
+        if (ds.Tables[0].Rows.Count == 0)
         {
-            Response.Cookies["curr_username"].Value = username.Text;
-            Response.Redirect("homepage.aspx");
+            Response.Write("<script> alert('User does not exist')</script >");
         }
         else
         {
-            Response.Write("<script> alert('Invalid credentials')</script >");
+
+            string ip_username = ds.Tables[0].Rows[0][0].ToString();
+            string ip_pswd = ds.Tables[0].Rows[0][5].ToString();
+            if (username.Text == ip_username && ip_pswd == password.Text)
+            {
+                Response.Cookies["curr_username"].Value = username.Text;
+                Response.Redirect("homepage.aspx");
+            }
+            else
+            {
+                Response.Write("<script> alert('Invalid credentials')</script >");
+            }
         }
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("register.aspx");
     }
 }

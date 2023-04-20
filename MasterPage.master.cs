@@ -11,4 +11,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
 
     }
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        Request.Cookies["curr_username"].Value = null;
+        Response.Redirect("login.aspx");
+    }
+
 }

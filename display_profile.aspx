@@ -23,25 +23,25 @@
 										<div id="form-messages"></div>
 											
 												<div class="form-group">                
-													Name: <asp:Label ID="Label2" runat="server" Text="Name"></asp:Label>
+													Name: <asp:Label ID="name" runat="server" Text="Name"></asp:Label>
                                                     
 												</div>
                                                 <div class="form-group">  
-                                                    Username: <asp:Label ID="Label1" runat="server" Text="Username"></asp:Label>
+                                                    Username: <asp:Label ID="username" runat="server" Text="Username"></asp:Label>
 													
 												</div>
 												<div class="form-group">    
-                                                    Email: <asp:Label ID="Label3" runat="server" Text="Email"></asp:Label>            
+                                                    Email: <asp:Label ID="email" runat="server" Text="Email"></asp:Label>            
                                                   
                                                     
 												</div>              
 												<div class="form-group">
-                                                    Bio: <asp:Label ID="Label4" runat="server" Text="Bio"></asp:Label>
+                                                    Bio: <asp:Label ID="bio" runat="server" Text="Bio"></asp:Label>
                                                     
 													
 												</div>
                                                 <div class="form-group">   
-                                                    Contact Number: <asp:Label ID="Label5" runat="server" Text="Contact Number"></asp:Label>           
+                                                    Contact Number: <asp:Label ID="contact_number" runat="server" Text="Contact Number"></asp:Label>           
                                                     
 													
 												</div> 

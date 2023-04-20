@@ -40,7 +40,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="mu-contact-area">
-
+                            <asp:Button ID="Button2" runat="server" Text="Register" OnClick="Button2_Click" />
 							<div class="mu-title-area">
 								<h2 class="mu-heading-title">Login for Instagram</h2>
 							</div>
