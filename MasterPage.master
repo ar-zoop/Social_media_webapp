@@ -49,7 +49,7 @@
 			      </button>
 
 			      <!-- Logo -->
-			      <a class="navbar-brand" href="index.html">Instagram</a>
+			      <a class="navbar-brand" href="homepage.aspx">Instagram</a>
 
 			    </div>
                  
@@ -70,7 +70,7 @@
 		
 	</header>
    
-    <form id="Form1" method="post" runat="server" EncType="multipart/form-data">
+    <form id="Form1" method="post" runat="server" enctype="multipart/form-data">
     <div>
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         

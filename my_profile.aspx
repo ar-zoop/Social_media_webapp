@@ -21,28 +21,27 @@
 								<div class="col-md-6">
 									<div class="mu-contact-form-area">
 										<div id="form-messages"></div>
-											    <asp:Panel ID="frmConfirmation" Visible="False" Runat="server">
-                                                    <asp:Label id="UpdateResult" Runat="server"></asp:Label>
-                                                </asp:Panel>
+											  
 												<div class="form-group">                
 													
-                                                    Name: <asp:TextBox ID="name" class="form-control" placeholder="Name" runat="server"></asp:TextBox>
+                                                    <%--<asp:TextBox ID="name" class="form-control" placeholder="Name" runat="server"></asp:TextBox>--%>
+                                                    Name: <asp:TextBox ID="name" class="form-control" runat="server"></asp:TextBox>
 												</div>
                                                 <div class="form-group">  
                                                     Username: 
                                                     <asp:Label ID="username" runat="server" Text="Username"></asp:Label>
-													
+                                                    
 												</div>
 												<div class="form-group">                
-                                                    Email: <asp:TextBox ID="email" runat="server" class="form-control" placeholder="Email"></asp:TextBox>
+                                                    Email: <asp:TextBox ID="email" runat="server" class="form-control"></asp:TextBox>
                                                     
 												</div>              
 												<div class="form-group">
-                                                    Bio: <asp:TextBox ID="bio" runat="server" class="form-control" placeholder="Bio"></asp:TextBox>
+                                                    Bio: <asp:TextBox ID="bio" runat="server" class="form-control"></asp:TextBox>
 													
 												</div>
                                                 <div class="form-group">              
-                                                    Contact Number: <asp:TextBox ID="contact_number" runat="server" class="form-control" placeholder="Contact Number"></asp:TextBox>  
+                                                    Contact Number: <asp:TextBox ID="contact_number" runat="server" class="form-control"></asp:TextBox>  
 													
 												</div> 
 												

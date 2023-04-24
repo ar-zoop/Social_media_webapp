@@ -28,19 +28,32 @@
 									<div class="col-md-6 ">                                        
 										<div class="mu-single-price">
                                             <%--@<asp:HyperLink id="hyperlink1"  runat="server" NavigateUrl='display_profile.aspx?username=<%#Eval("username")%>' />  <br />--%>
-                                            @<asp:LinkButton ID="LinkButton1" runat="server" Text='<%#Eval("username") %>' OnCommand="LinkButton1_Click" CommandName='<%#Eval("username")%> '> 
-                                               
-                                            </asp:LinkButton><br />
+                                            @<asp:LinkButton ID="LinkButton1" runat="server" Text='<%#Eval("username") %>' OnCommand="LinkButton1_Click" CommandName='<%#Eval("username")%> '> </asp:LinkButton><br />
                                             <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("image_file") %>' />  <br />
                                             <asp:HiddenField ID="h1" runat="server" Value='<%#Eval("post_id") %>' />
-                                            <asp:LinkButton ID="like" class="mu-register-btn" runat="server" Text="Like" OnCommand="LinkButton2_Click" CommandName='<%#Eval("post_id")%>'></asp:LinkButton>        
+                                            <asp:LinkButton ID="like" class="mu-register-btn" runat="server"  OnCommand="LinkButton2_Click" CommandName='<%#Eval("post_id")%>'></asp:LinkButton>        
 											<%--<asp:Button class="mu-register-btn" ID="like" runat="server" Text="Like" OnClick="like_Click"/>--%>
-                                            <asp:Button class="mu-register-btn" ID="comment" runat="server" Text="Comment"  />
-                                            <asp:Button class="mu-register-btn" ID="share" runat="server" Text="Share" /> <br />
-                                            Likes=<asp:Label ID="likeCount" runat="server" Text='<%#Eval("likes") %>' ></asp:Label>
-                                        </div>
-                                        
-                                        
+                                            <%--<asp:LinkButton ID="comment" CommandArgument='<%#Eval("post_id")%>' class="mu-register-btn" runat="server" text="Comment" OnCommand="comment_Click"> </asp:LinkButton>--%>
+                                            <asp:LinkButton ID="comment2" CommandArgument='<%#Eval("post_id")%>' class="mu-register-btn" runat="server" text="Comment" OnCommand="comment2_Click"> </asp:LinkButton>
+
+                                            <asp:Panel ID="show_delete_button" runat="server" Visible="false">
+                                                <asp:LinkButton ID="delete" CommandArgument='<%# Eval("post_id") %>' class="mu-register-btn" runat="server" text="Delete" OnCommand="delete_Click" Visible="true"> </asp:LinkButton>        
+                                            </asp:Panel>
+
+                                           <br/> Likes=<asp:Label ID="likeCount" runat="server" Text='<%#Eval("likes") %>' ></asp:Label><br />
+                                            
+                                       
+                                        <asp:Panel ID="show_comment_box" Visible="false" runat="server">
+                                            <asp:TextBox ID="comment_box"  runat="server" class="form-control" placeholder="Comment here..."></asp:TextBox><br />
+                                            <asp:LinkButton ID="uploadComment" CommandArgument='<%# Eval("post_id") %>' class="mu-send-msg-btn" runat="server" text="Post" OnCommand="uploadComment_Click"></asp:LinkButton>
+                                        </asp:Panel>
+
+                                        <asp:Panel ID="display_comments" runat="server"  Visible="false">
+
+                                        </asp:Panel>
+                                        <%--<asp:TextBox ID="comment_box" Visible="false" runat="server" class="form-control" placeholder="Comment here..."></asp:TextBox>--%> <br />
+                                        <%--<asp:LinkButton ID="uploadComment" CommandArgument='<%# Eval("post_id") %>' class="mu-send-msg-btn" runat="server" text="Post" OnCommand="uploadComment_Click"></asp:LinkButton>--%>        
+                                         </div>
 									</div>
 
 									

@@ -30,33 +30,26 @@ public partial class profile : System.Web.UI.Page
         email.Text=ds.Tables[0].Rows[0][2].ToString();
         bio.Text=ds.Tables[0].Rows[0][3].ToString();
         contact_number.Text = ds.Tables[0].Rows[0][4].ToString();
-        con.Close();
-        /*
-        string ip_username = ds.Tables[0].Rows[0][0].ToString();
-        string ip_pswd = ds.Tables[0].Rows[0][5].ToString();
-        if (username.Text == ip_username && ip_pswd == password.Text)
-        {
-            Response.Cookies["curr_username"].Value = username.Text;
-            Response.Redirect("homepage.aspx");
-        }
-        else
-        {
-            Response.Write("<script> alert('Invalid credentials')</script >");
-        }
-         */
+      
+      
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        string path = ConfigurationManager.ConnectionStrings["connect"].ToString();
-        con = new SqlConnection(path);
-        con.Open();
-        string curr_username = Request.Cookies["curr_username"].Value;
         
-        string s = "update user_details set name= '" + name.Text + "' , email = '" + email.Text + "', bio= '" + bio.Text + "', contact_number='" + contact_number.Text + "' where username= '" + curr_username + "';";
-        cmd = new SqlCommand(s, con);
+        string curr_username = Request.Cookies["curr_username"].Value;
+
+        string nameValue = name.Text; // Accessing the value of the name TextBox control
+        string emailValue = email.Text; // Accessing the value of the email TextBox control
+        string bioValue = bio.Text; // Accessing the value of the bio TextBox control
+        string contactNumberValue = contact_number.Text; // Accessing the value of the contact_number TextBox control
+
+        //Response.Write("<script> alert(name.Text)</script >");
+        string s1 = "update user_details set name= '" + nameValue + "' , email = '" + emailValue + "', bio= '" + bioValue + "', contact_number='" + contactNumberValue + "' where username= '" + curr_username + "';";
+        cmd = new SqlCommand(s1, con);
         cmd.ExecuteNonQuery();
-        Response.Write("<script> alert('Profile successfully updated.')</script >");
-        con.Close();
+        //Response.Write("<script> alert('Profile successfully updated.')</script >");
+        //Response.Redirect("my_profile.aspx");
+
       
     }
 }
