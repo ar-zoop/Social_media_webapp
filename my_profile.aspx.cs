@@ -16,25 +16,31 @@ public partial class profile : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-        string path = ConfigurationManager.ConnectionStrings["connect"].ToString();
-        con = new SqlConnection(path);
-        con.Open();
-        
-        string s = " select * from user_details where username='" + Request.Cookies["curr_username"].Value + "'; ";
-        ad = new SqlDataAdapter(s, con);
-        DataSet ds = new DataSet();
-        ad.Fill(ds);
-        username.Text = ds.Tables[0].Rows[0][0].ToString();
-        name.Text=ds.Tables[0].Rows[0][1].ToString();
-        email.Text=ds.Tables[0].Rows[0][2].ToString();
-        bio.Text=ds.Tables[0].Rows[0][3].ToString();
-        contact_number.Text = ds.Tables[0].Rows[0][4].ToString();
+        if (!Page.IsPostBack)
+        {
+            string path = ConfigurationManager.ConnectionStrings["connect"].ToString();
+            con = new SqlConnection(path);
+            con.Open();
+
+            string s = " select * from user_details where username='" + Request.Cookies["curr_username"].Value + "'; ";
+            ad = new SqlDataAdapter(s, con);
+            DataSet ds = new DataSet();
+            ad.Fill(ds);
+            username.Text = ds.Tables[0].Rows[0][0].ToString();
+            name.Text = ds.Tables[0].Rows[0][1].ToString();
+            email.Text = ds.Tables[0].Rows[0][2].ToString();
+            bio.Text = ds.Tables[0].Rows[0][3].ToString();
+            contact_number.Text = ds.Tables[0].Rows[0][4].ToString();
+            con.Close();
+        }
       
       
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
+        string path = ConfigurationManager.ConnectionStrings["connect"].ToString();
+        con = new SqlConnection(path);
+        con.Open();
         
         string curr_username = Request.Cookies["curr_username"].Value;
 
@@ -47,9 +53,11 @@ public partial class profile : System.Web.UI.Page
         string s1 = "update user_details set name= '" + nameValue + "' , email = '" + emailValue + "', bio= '" + bioValue + "', contact_number='" + contactNumberValue + "' where username= '" + curr_username + "';";
         cmd = new SqlCommand(s1, con);
         cmd.ExecuteNonQuery();
-        //Response.Write("<script> alert('Profile successfully updated.')</script >");
+        Response.Write("<script> alert('Profile successfully updated.')</script >");
         //Response.Redirect("my_profile.aspx");
-
+        con.Close();
       
     }
+
+    
 }

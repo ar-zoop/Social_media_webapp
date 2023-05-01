@@ -12,7 +12,7 @@
 					<div class="col-md-12">
 						<div class="mu-pricing-area">
 							<asp:ScriptManager ID="sc" runat="server"></asp:ScriptManager>
-					<asp:Repeater ID="R1" runat="server">
+					<asp:Repeater ID="R1" runat="server" OnItemDataBound="R1_ItemDataBound">
                         <ItemTemplate>
 							<!-- Start repeater here -->
 						<asp:UpdatePanel ID="up" runat="server">
@@ -21,7 +21,7 @@
                             				<div class="mu-pricing-conten">
                                 <div class="container">
 								<div class="row">
-									
+									    
                                    <div class="col-md-3 ">   
                                    </div>
                                
@@ -45,12 +45,25 @@
                                        
                                         <asp:Panel ID="show_comment_box" Visible="false" runat="server">
                                             <asp:TextBox ID="comment_box"  runat="server" class="form-control" placeholder="Comment here..."></asp:TextBox><br />
-                                            <asp:LinkButton ID="uploadComment" CommandArgument='<%# Eval("post_id") %>' class="mu-send-msg-btn" runat="server" text="Post" OnCommand="uploadComment_Click"></asp:LinkButton>
+                                            <asp:LinkButton ID="uploadComment" CommandArgument='<%# Eval("post_id") %>' class="mu-register-btn" runat="server" text="Post" OnCommand="uploadComment_Click"></asp:LinkButton><br />
                                         </asp:Panel>
 
                                         <asp:Panel ID="display_comments" runat="server"  Visible="false">
-
+                                            Comments: <br />
+                                            <asp:Repeater ID="repeaterComments" runat="server">                                                
+                                                <ItemTemplate>                                                    
+                                                    @<asp:LinkButton ID="commentor" runat="server" Text='<%#Eval("username") %>' OnCommand="LinkButton1_Click" CommandName='<%#Eval("username")%> '> </asp:LinkButton>  :                                           
+                                                    <asp:Label ID="fetched_comment" runat="server"  Text='<%#Eval("comment") %>'></asp:Label>
+                                                  <%--  <asp:HiddenField ID="h1" runat="server" Value='<%#Eval("post_id") %>' />--%>
+                                                    <asp:Panel ID="show_delete_button" runat="server" Visible="false">
+                                                        <asp:LinkButton ID="delete_comment" CommandArgument='<%# Eval("post_id") %>' class="mu-register-btn" runat="server" text="Delete" OnCommand="delete_comment_Click" Visible="true"> </asp:LinkButton>        
+                                                    </asp:Panel>
+                                                    <br/>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
                                         </asp:Panel>
+
+
                                         <%--<asp:TextBox ID="comment_box" Visible="false" runat="server" class="form-control" placeholder="Comment here..."></asp:TextBox>--%> <br />
                                         <%--<asp:LinkButton ID="uploadComment" CommandArgument='<%# Eval("post_id") %>' class="mu-send-msg-btn" runat="server" text="Post" OnCommand="uploadComment_Click"></asp:LinkButton>--%>        
                                          </div>
