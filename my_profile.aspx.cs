@@ -59,5 +59,75 @@ public partial class profile : System.Web.UI.Page
       
     }
 
-    
+
+    protected void LinkButton1_Command(object sender, CommandEventArgs e)
+    {
+        string path = ConfigurationManager.ConnectionStrings["connect"].ToString();
+        con = new SqlConnection(path);
+        con.Open();
+        string s = "select * from followers where username='" + Request.Cookies["curr_username"].Value + "' ";
+        ad = new SqlDataAdapter(s, con);
+        DataSet ds = new DataSet();
+
+        ad.Fill(ds);
+
+        followersRepeater.DataSource = ds;
+        followersRepeater.DataBind();
+
+        LinkButton button = (LinkButton)sender;
+        string panelID2 = "followersRepeater";
+        //RepeaterItem item = (RepeaterItem)button.NamingContainer;
+        //Panel panel2 = (Panel)item.FindControl(panelID2);
+        //panel2.Visible = true;
+      
+        followersPanel.Visible = true;
+        repeaterPanel.Visible = true;
+
+        followingPanel.Visible = false;
+        repeaterPanel1.Visible = false;
+    }
+    protected void LinkButton2_Command(object sender, CommandEventArgs e)
+    {
+        string path = ConfigurationManager.ConnectionStrings["connect"].ToString();
+        con = new SqlConnection(path);
+        con.Open();
+        string s = "select * from followers where follower_name='" + Request.Cookies["curr_username"].Value + "' ";
+        ad = new SqlDataAdapter(s, con);
+        DataSet ds = new DataSet();
+
+        ad.Fill(ds);
+
+        followingRepeater.DataSource = ds;
+        followingRepeater.DataBind();
+
+        LinkButton button = (LinkButton)sender;
+        string panelID2 = "followingRepeater";
+        //RepeaterItem item = (RepeaterItem)button.NamingContainer;
+        //Panel panel2 = (Panel)item.FindControl(panelID2);
+        //panel2.Visible = true;
+
+        followingPanel.Visible = true;
+        repeaterPanel1.Visible = true;
+
+        followersPanel.Visible = false;
+        repeaterPanel.Visible =  false;
+    }
+    protected void LinkButton3_Command(object sender, CommandEventArgs e)
+    {
+        string username = Convert.ToString(e.CommandName);
+        if (username == Request.Cookies["curr_username"].Value)
+        {
+            Response.Redirect("my_profile.aspx");
+        }
+        else Response.Redirect("display_profile.aspx?username=" + username);
+    }
+    protected void LinkButton4_Command1(object sender, CommandEventArgs e)
+    {
+        string username = Convert.ToString(e.CommandName);
+        if (username == Request.Cookies["curr_username"].Value)
+        {
+            Response.Redirect("my_profile.aspx");
+        }
+        else Response.Redirect("display_profile.aspx?username=" + username);
+    }
 }

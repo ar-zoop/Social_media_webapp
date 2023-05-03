@@ -129,7 +129,11 @@ public partial class Homepage : System.Web.UI.Page
     protected void LinkButton1_Click(object sender, CommandEventArgs e)
     {
         string username = Convert.ToString(e.CommandName);
-        Response.Redirect("display_profile.aspx?username="+username);
+        if (username == Request.Cookies["curr_username"].Value)
+        {
+            Response.Redirect("my_profile.aspx");
+        }
+        else Response.Redirect("display_profile.aspx?username=" + username);
     }
 
     protected void uploadComment_Click(object sender, CommandEventArgs e)

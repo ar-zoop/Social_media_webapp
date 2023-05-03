@@ -17,13 +17,40 @@
 							<!-- Start Contact Content -->
 							<div class="mu-contact-content">
 								<div class="row">
-                                <div class="col-md-3"></div>
-								<div class="col-md-6">
+                                <div class="col-md-2"></div>
+								<div class="col-md-8">
 									<div class="mu-contact-form-area">
 										<div id="form-messages"></div>
 											  
 												<div class="form-group">                
-													
+                                                    <asp:LinkButton ID="LinkButton1" class="mu-register-btn" runat="server" OnCommand="LinkButton1_Command" Text="Followers"></asp:LinkButton>
+                                                    <asp:LinkButton ID="LinkButton2" class="mu-register-btn" runat="server" OnCommand="LinkButton2_Command" Text="Following"></asp:LinkButton>
+                                                    <br />
+                                                    <asp:Panel ID="followersPanel" runat="server" Visible="false">
+                                                        Total followers:
+                                                        <asp:Label ID="followersCount" runat="server"></asp:Label>
+                                                        <asp:Panel ID="repeaterPanel" runat="server" Visible="false">
+                                                            <asp:Repeater ID="followersRepeater" runat="server">
+                                                                <ItemTemplate>
+                                                                    @<asp:LinkButton ID="LinkButton3" runat="server" Text='<%#Eval("follower_name") %>' OnCommand="LinkButton3_Command" CommandName='<%#Eval("username")%> '> </asp:LinkButton><br />
+                                                                </ItemTemplate>
+                                                            </asp:Repeater>
+                                                        </asp:Panel>
+
+                                                    </asp:Panel>
+
+                                                    <asp:Panel ID="followingPanel" runat="server" Visible="false">
+                                                        Total following:
+                                                        <asp:Label ID="followingCount" runat="server"></asp:Label>
+                                                        <asp:Panel ID="repeaterPanel1" runat="server" Visible="false">
+                                                            <asp:Repeater ID="followingRepeater" runat="server">
+                                                                <ItemTemplate>
+                                                                    @<asp:LinkButton ID="LinkButton4" runat="server" Text='<%#Eval("username") %>' OnCommand="LinkButton4_Command1" CommandName='<%#Eval("username")%> '> </asp:LinkButton><br />
+                                                                </ItemTemplate>
+                                                            </asp:Repeater>
+                                                        </asp:Panel>
+
+                                                    </asp:Panel>
                                                     <%--<asp:TextBox ID="name" class="form-control" placeholder="Name" runat="server"></asp:TextBox>--%>
                                                     Name: <asp:TextBox ID="name" class="form-control" runat="server"></asp:TextBox>
 												</div>
