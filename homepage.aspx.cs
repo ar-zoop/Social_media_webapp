@@ -281,5 +281,17 @@ public partial class Homepage : System.Web.UI.Page
             }
         }
     }
-  
+
+    protected void search_username_Click(object sender, EventArgs e)
+    {
+        string display = TextBox1.Text;
+        if (display == Request.Cookies["curr_username"].Value)
+        {
+            Response.Redirect("my_profile.aspx");
+        }
+        else 
+        {
+        Response.Redirect("display_profile.aspx?username=" + display);
+        }
+    }
 }

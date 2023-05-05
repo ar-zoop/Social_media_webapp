@@ -14,10 +14,13 @@
 					<div class="col-md-12">
 						<div class="mu-pricing-area">
 							<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods = "true">    
-                            </asp:ScriptManager>    
-                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                            <asp:AutoCompleteExtender ServiceMethod="GetCompletionList" MinimumPrefixLength="1" CompletionInterval="10" EnableCaching="false" CompletionSetCount="1" TargetControlID="TextBox1" ID="AutoCompleteExtender1" runat="server" FirstRowSelected="false"></asp:AutoCompleteExtender>
-					<asp:Repeater ID="R1" runat="server" OnItemDataBound="R1_ItemDataBound">
+                            </asp:ScriptManager>  
+                            <div class="text-center">
+                                <asp:TextBox ID="TextBox1" runat="server" placeholder="Search username..." ></asp:TextBox>
+                                <asp:Button runat="server" ID="search_username" OnClick="search_username_Click" Text="Search"/>
+                                <asp:AutoCompleteExtender ServiceMethod="GetCompletionList" MinimumPrefixLength="1" CompletionInterval="10" EnableCaching="false" CompletionSetCount="1" TargetControlID="TextBox1" ID="AutoCompleteExtender1" runat="server" FirstRowSelected="false"></asp:AutoCompleteExtender>
+					        </div>  
+                                <asp:Repeater ID="R1" runat="server" OnItemDataBound="R1_ItemDataBound">
                         <ItemTemplate>
 							<!-- Start repeater here -->
 						<asp:UpdatePanel ID="up" runat="server">
