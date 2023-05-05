@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="homepage.aspx.cs" Inherits="Homepage" EnableEventValidation="true" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -11,7 +13,10 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="mu-pricing-area">
-							<asp:ScriptManager ID="sc" runat="server"></asp:ScriptManager>
+							<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods = "true">    
+                            </asp:ScriptManager>    
+                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                            <asp:AutoCompleteExtender ServiceMethod="GetCompletionList" MinimumPrefixLength="1" CompletionInterval="10" EnableCaching="false" CompletionSetCount="1" TargetControlID="TextBox1" ID="AutoCompleteExtender1" runat="server" FirstRowSelected="false"></asp:AutoCompleteExtender>
 					<asp:Repeater ID="R1" runat="server" OnItemDataBound="R1_ItemDataBound">
                         <ItemTemplate>
 							<!-- Start repeater here -->

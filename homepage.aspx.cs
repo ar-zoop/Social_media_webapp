@@ -253,5 +253,33 @@ public partial class Homepage : System.Web.UI.Page
         Response.Write("<script> alert('Comment deleted successfully')</script >");
 
     }
+
+    [System.Web.Script.Services.ScriptMethod()]
+    [System.Web.Services.WebMethod]
+    public static List<string> GetCompletionList(string prefixText, int count)
+    {
+        using (SqlConnection con = new SqlConnection())
+        {
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["connect"].ConnectionString;
+            using (SqlCommand com = new SqlCommand())
+            {
+                com.CommandText = "select username from user_details where " + "username like @Search + '%'";
+
+                com.Parameters.AddWithValue("@Search", prefixText);
+                com.Connection = con;
+                con.Open();
+                List<string> countryNames = new List<string>();
+                using (SqlDataReader sdr = com.ExecuteReader())
+                {
+                    while (sdr.Read())
+                    {
+                        countryNames.Add(sdr["username"].ToString());
+                    }
+                }
+                con.Close();
+                return countryNames;
+            }
+        }
+    }
   
 }
